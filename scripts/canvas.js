@@ -9,7 +9,7 @@ var ram = [];
 var $screen = $("#screen");
 var screen = $screen.get(0);
 var cxt = screen.getContext("2d");
-$(function() {
+$(() => {
     setInterval(loop, 10);
 });
 function loop() {
@@ -30,14 +30,14 @@ function particle(xPos, yPos) {
     this.zPos = Math.random()*4;
     this.Vy = -2;
     this.Vx = Math.random()*2+2;
-    this.re = function(c) {
+    this.re = (c) => {
         c.fillStyle = "rgba(255, 255, 255, 0.43)";
         c.beginPath();
         c.arc(this.xPos, this.yPos, this.zPos, 0, Math.PI*2, true);
         c.closePath();
         c.fill();
     }
-    this.update = function() {
+    this.update = () => {
         this.xPos += this.Vx;
         this.yPos += this.Vy;
         this.Vy += 0.098;// g = dv/dt
